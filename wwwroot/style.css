@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 100%);
+    font-family: 'Courier New', 'Monaco', monospace;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00f3ff;
+}
+
+.container {
+    padding: 20px;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+    letter-spacing: 4px;
+    text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff, 0 0 30px #8a2be2;
+    animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    from {
+        text-shadow: 0 0 5px #00f3ff, 0 0 10px #00f3ff, 0 0 15px #8a2be2;
+    }
+    to {
+        text-shadow: 0 0 15px #00f3ff, 0 0 25px #00f3ff, 0 0 35px #8a2be2;
+    }
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 30px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.score-box, .ranking-box {
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00f3ff;
+    border-radius: 10px;
+    padding: 12px 20px;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+}
+
+.label {
+    font-size: 0.8em;
+    letter-spacing: 2px;
+    color: #bf00ff;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #00f3ff;
+}
+
+.ranking-list {
+    min-width: 150px;
+    font-size: 0.9em;
+}
+
+.ranking-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 0;
+    color: #fff;
+    border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+}
+
+.ranking-placeholder {
+    color: #666;
+    font-style: italic;
+}
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+canvas {
+    border: 3px solid #00f3ff;
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.3);
+    background: #000;
+    cursor: none;
+}
+
+.controls-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    color: #8a2be2;
+    font-size: 0.8em;
+    margin-top: 15px;
+}
+
+.control-key {
+    background: rgba(0, 243, 255, 0.2);
+    border: 2px solid #00f3ff;
+    border-radius: 8px;
+    padding: 5px 12px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #1a0033, #0a0a0a);
+    border: 3px solid #00f3ff;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    min-width: 350px;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    color: #ff0055;
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px #ff0055;
+}
+
+.final-score {
+    font-size: 1.5em;
+    margin: 20px 0;
+    color: #00f3ff;
+}
+
+.player-name-input {
+    margin: 20px 0;
+}
+
+.player-name-input input {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00f3ff;
+    border-radius: 8px;
+    padding: 10px 15px;
+    color: #00f3ff;
+    font-size: 1em;
+    width: 250px;
+    text-align: center;
+    font-family: monospace;
+}
+
+.player-name-input input:focus {
+    outline: none;
+    box-shadow: 0 0 15px #00f3ff;
+}
+
+.neon-button {
+    background: transparent;
+    border: 2px solid #bf00ff;
+    color: #bf00ff;
+    padding: 12px 30px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: monospace;
+    margin-top: 10px;
+}
+
+.neon-button:hover {
+    background: #bf00ff;
+    color: #000;
+    box-shadow: 0 0 20px #bf00ff;
+    transform: scale(1.05);
+}
+
+.neon-glow {
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+    canvas {
+        width: 100%;
+        height: auto;
+    }
+    
+    .hud {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .modal-content {
+        margin: 20px;
+        padding: 25px;
+        min-width: auto;
+    }
+}
